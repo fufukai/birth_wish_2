@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap');
+
+/* === 基础设置 === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background: #fdfbf7; /* 温暖的米白 */
+    font-family: 'Noto Serif SC', serif; /* 衬线字体，更文艺 */
+    color: #4a4a4a;
+    overflow: hidden;
+}
+
+/* 动态背景：简单的渐变流动，增加高级感 */
+body::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, #ffe4e1 10%, #fff0f5 40%, #fdfbf7 70%);
+    animation: bgMove 15s linear infinite;
+    z-index: -1;
+}
+
+@keyframes bgMove {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* === 遮罩层 === */
+#startMask {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: #fdfbf7;
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.6s ease;
+}
+
+.mask-content {
+    text-align: center;
+    animation: fadeIn 1.5s ease;
+}
+
+.mask-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    animation: bounce 2s infinite;
+}
+
+#startBtn {
+    margin-top: 30px;
+    padding: 12px 40px;
+    background: #333;
+    color: #fff;
+    border: none;
+    font-family: inherit;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-radius: 50px;
+}
+#startBtn:active { transform: scale(0.95); }
+
+/* === Swiper 样式 === */
+.swiper { width: 100%; height: 100%; }
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* 卡片容器：毛玻璃效果 */
+.content-box {
+    width: 85%;
+    max-width: 450px;
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(10px); /* 毛玻璃核心 */
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    padding: 40px 30px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+    text-align: center;
+    position: relative;
+    /* 让点击事件能穿透到swpier处理，但内容本身不阻挡 */
+    pointer-events: none; 
+}
+/* 重要：恢复内容区域可交互，否则如果有按钮会点不动，
+   但在我们的案例中主要是点击翻页，这里设为auto即可 */
+.content-box * {
+    pointer-events: auto;
+}
+
+/* 首页排版 */
+.main-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 2px;
+    color: #333;
+    margin-bottom: 10px;
+}
+.main-title span { color: #d4a373; font-size: 3.5rem;}
+.sub-title { font-size: 1rem; color: #888; letter-spacing: 5px; margin-bottom: 30px; }
+.decoration-line { width: 40px; height: 1px; background: #333; margin: 0 auto 30px; }
+.guide-text { font-size: 0.8rem; color: #aaa; animation: blink 2s infinite; }
+
+/* 拍立得照片风格 */
+.polaroid {
+    background: #fff;
+    padding: 10px 10px 40px 10px; /* 底部留白 */
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    transform: rotate(-3deg);
+    margin: 0 auto 25px;
+    width: 80%;
+    transition: transform 0.5s;
+}
+.polaroid img { width: 100%; display: block; filter: brightness(1.05); }
+.rotate-right { transform: rotate(3deg); }
+.no-rotate { transform: rotate(0); }
+
+/* 文字区域 */
+h3 { font-size: 1.1rem; color: #d4a373; margin-bottom: 15px; font-weight: normal; }
+.text-area p { font-size: 0.95rem; line-height: 1.8; margin-bottom: 5px; color: #555; }
+.mt-20 { margin-top: 20px; }
+
+/* 引用语页面 */
+.layout-text { border: 2px solid #fff; background: rgba(255,255,255,0.6); }
+.quote-mark { font-size: 4rem; color: #e6ccb2; line-height: 0; margin: 20px 0; font-family: sans-serif;}
+.quote-mark.right { text-align: right; }
+.quote-content { font-size: 1.2rem; line-height: 2; font-style: italic; color: #555;}
+
+/* 双照片叠加 */
+.double-photo { position: relative; height: 280px; width: 80%; margin: 0 auto; }
+.double-photo img { 
+    position: absolute; width: 100%; 
+    padding: 8px; background: #fff; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+}
+.double-photo .p1 { top: 0; left: 0; transform: rotate(-5deg); z-index: 1; }
+.double-photo .p2 { top: 40px; left: 20px; transform: rotate(5deg); z-index: 2; }
+
+/* 计时器精致化 */
+#timer { display: flex; justify-content: space-around; margin: 30px 0; }
+.time-block { display: flex; flex-direction: column; }
+#timer span { font-size: 1.8rem; font-weight: bold; color: #333; }
+#timer small { font-size: 0.7rem; color: #999; text-transform: uppercase; margin-top: 5px;}
+.footer { font-size: 0.8rem; color: #bbb; letter-spacing: 1px; }
+
+/* 音乐按钮 */
+.music-btn {
+    position: fixed; top: 20px; right: 20px; width: 40px; height: 40px;
+    background: rgba(255,255,255,0.8);
+    border-radius: 50%; display: flex; justify-content: center; align-items: center;
+    cursor: pointer; z-index: 2001;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.stopped { opacity: 0.7; }
+
+/* 点击特效（花瓣）容器，在CSS中不需要做太多，主要靠JS生成 */
+.petal {
+    position: absolute;
+    top: -20px;
+    font-size: 20px;
+    animation: fall linear forwards;
+    pointer-events: none; /* 必须：保证点穿 */
+    z-index: 9999;
+}
+
+@keyframes fall {
+    to { transform: translateY(100vh) rotate(360deg); }
+}
+
+@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* 手机适配微调 */
+@media (max-width: 400px) {
+    .content-box { width: 90%; padding: 30px 15px; }
+    .main-title { font-size: 2rem; }
+    .main-title span { font-size: 3rem; }
+}
