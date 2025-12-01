@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>To: 最棒的mxy ✨</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="style.css">
+    <!-- 引入更有质感的字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- 背景音乐 -->
+    <audio id="bgMusic" loop>
+        <source src="music/music.mp3" type="audio/mpeg">
+    </audio>
+    <div id="musicBtn" class="music-btn stopped">🎵</div>
+
+    <!-- 遮罩层 (更精致的开场) -->
+    <div id="startMask">
+        <div class="mask-content">
+            <div class="mask-icon">✨</div>
+            <h1>Hey, 这里有一份回忆</h1>
+            <p>请开启声音，慢下来看看</p>
+            <button id="startBtn">开启旅程</button>
+        </div>
+    </div>
+
+    <!-- Swiper 内容区 -->
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper" id="slideContainer">
+            
+            <!-- 第一页：封面 -->
+            <div class="swiper-slide slide-cover">
+                <div class="content-box">
+                    <div class="main-title">
+                        <span>H</span>APPY<br><span>B</span>IRTHDAY
+                    </div>
+                    <div class="sub-title">致 独一无二的mxy</div>
+                    <div class="decoration-line"></div>
+                    <p class="guide-text">Click screen or swipe down ↓</p>
+                </div>
+            </div>
+
+            <!-- 第二页：照片+简短文字 (Layout 1) -->
+            <div class="swiper-slide slide-page">
+                <div class="content-box layout-1">
+                    <div class="polaroid">
+                        <!-- 请放入 images/photo1.jpg -->
+                        <img src="images/photo1.jpg" alt="Memory">
+                    </div>
+                    <div class="text-area">
+                        <h3>01. 初遇 / </h3>
+                        <p>光阴如梭，</p>
+                        <p>还记得高一下学期学考的那次，</p>
+                        <p>和你一个考场，也是第一次和你打招呼</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第三页：纯文字语录 (Layout Text) -->
+            <div class="swiper-slide slide-page">
+                <div class="content-box layout-text">
+                    <div class="quote-mark">“</div>
+                    <p class="quote-content">
+                        那天没觉得什么特别，<br>
+                        只是后来偶尔想起，<br>
+                        觉得那天挺好的。
+                    </p>
+                    <div class="quote-mark right">”</div>
+                </div>
+            </div>
+
+            <!-- 第四页：照片+左文右图 (Layout 2) -->
+            <div class="swiper-slide slide-page">
+                <div class="content-box layout-2">
+                    <div class="text-area">
+                        <h3>02. 又是一年新的时光在你手心展开，</h3>
+                        <p>愿你保持真诚与善良，在喧嚣里有一方安静，在忙碌里有一处栖息。</p>
+                        <p>愿你拥有被理解的幸运，也拥有不怕风雨的勇气。</p>
+                        <p>愿你未来的道路柔软而明亮，每一步都踩在自己喜欢的节奏上。</p>
+                    </div>
+                    <div class="polaroid rotate-right">
+                        <!-- 请放入 images/photo2.jpg -->
+                        <img src="images/photo2.jpg" alt="Fun Time">
+                    </div>
+                </div>
+            </div>
+
+             <!-- 第五页：两张照片叠加 (Layout 3) -->
+             <div class="swiper-slide slide-page">
+                <div class="content-box layout-3">
+                    <div class="double-photo">
+                         <!-- 请放入 images/photo3.jpg -->
+                        <img src="images/photo3.jpg" class="p1" alt="Pic">
+                         <!-- 请放入 images/photo4.jpg (如果没有就复用photo1) -->
+                        <img src="images/photo5.jpg" class="p2" alt="Pic">
+                    </div>
+                    <p class="mt-20">哪怕世界未来会下雨，<br>祝愿你的世界永远天晴。</p>
+                </div>
+            </div>
+
+            <!-- 第六页：深度祝福 -->
+            <div class="swiper-slide slide-page">
+                <div class="content-box layout-1">
+                     <div class="polaroid no-rotate">
+                         <!-- 请放入 images/photo2.jpg -->
+                        <img src="images/photo4.jpg" alt="Blessing">
+                    </div>
+                    <div class="text-area">
+                        <h3>03. 祝愿</h3>
+                        <p>希望你继续兴致盎然地与世界交手，</p>
+                        <p>一直走在开满鲜花的路上，</p>
+                        <p>17岁生日快乐，永远的mxy!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第七页：倒计时 -->
+            <div class="swiper-slide slide-end">
+                <div class="content-box layout-end">
+                    <h2>也预祝你18岁生日快乐！</h2>
+                    <p>距离你的18岁还有...</p>
+                    <div id="timer">
+                        <div class="time-block">
+                            <span id="days">0</span>
+                            <small>Days</small>
+                        </div>
+                        <div class="time-block">
+                            <span id="hours">0</span>
+                            <small>Hours</small>
+                        </div>
+                        <div class="time-block">
+                            <span id="minutes">0</span>
+                            <small>Min</small>
+                        </div>
+                        <div class="time-block">
+                            <span id="seconds">0</span>
+                            <small>Sec</small>
+                        </div>
+                    </div>
+                    <p class="footer">Next chapter loading...</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
