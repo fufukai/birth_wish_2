@@ -79,7 +79,7 @@ function initSwiper() {
    3. 点击/触摸生成纯花瓣特效
    ==================== */
 // 只保留花瓣符号
-const flowerEmojis = ['🌸', '🌺', '🌷', '🏵️','🎂','🎈','🎉']; 
+const flowerEmojis = ['🌸', '🌺', '🌷', '🏵️','🎂','🎈','🎉','❤','🧡']; 
 
 function createPetal(x, y) {
     const petal = document.createElement('div');
@@ -125,7 +125,7 @@ document.addEventListener('click', (e) => {
    ==================== */
 // !!! 请在这里设置生日的具体时间 (年-月-日T时:分:秒)
 // 注意：如果今年的生日已经过了，记得把年份改成明年，否则会显示全是0
-const targetDate = new Date('2026-12-03T00:00:00'); 
+const targetDate = new Date('2026-12-14T00:00:00'); 
 
 function updateTimer() {
     const now = new Date();
@@ -157,4 +157,5 @@ function updateTimer() {
 }
 
 setInterval(updateTimer, 1000);
+
 updateTimer();
